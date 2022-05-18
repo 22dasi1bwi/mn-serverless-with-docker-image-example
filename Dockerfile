@@ -1,3 +1,4 @@
+# Based on https://gallery.ecr.aws/lambda/java
 FROM public.ecr.aws/lambda/java:11
 
 # Copy function code and runtime dependencies from Gradle layout
