@@ -1,4 +1,5 @@
 package example.micronaut
+import io.micronaut.context.ApplicationContext
 import io.micronaut.core.annotation.Introspected
 import io.micronaut.function.aws.MicronautRequestHandler
 import jakarta.inject.Inject
@@ -6,7 +7,12 @@ import jakarta.inject.Singleton
 import java.util.UUID
 
 @Introspected
-class BookRequestHandler : MicronautRequestHandler<Book?, BookSaved?>() {
+class BookRequestHandler() : MicronautRequestHandler<Book?, BookSaved?>() {
+
+    // only for tests
+    constructor(context: ApplicationContext) : this() {
+       super.applicationContext = context
+    }
 
     @Inject
     lateinit var simpleBean: SimpleBean
